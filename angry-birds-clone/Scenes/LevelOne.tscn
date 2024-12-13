@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdqt22x3v1sav"]
+
+[ext_resource type="Script" path="res://Scripts/LevelOne.cs" id="1_ajb5r"]
+[ext_resource type="Script" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_yc31d"]
+[ext_resource type="PackedScene" uid="uid://byprpcomo4en1" path="res://Scenes/MouseCircle.tscn" id="2_tpg12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg28"]
+
+[node name="Level One" type="Node2D"]
+script = ExtResource("1_ajb5r")
+mouseCircle = ExtResource("2_tpg12")
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(585, 600)
+
+[node name="Rectangle" type="Node2D" parent="Floor"]
+scale = Vector2(1.24, 1)
+script = ExtResource("1_yc31d")
+size = Vector2(960, 100)
+fill_color = Color(0.317348, 0.615589, 0.347083, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+scale = Vector2(59.2, 4.56)
+shape = SubResource("RectangleShape2D_rlg28")

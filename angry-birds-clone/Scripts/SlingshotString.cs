@@ -1,28 +1,15 @@
 using Godot;
 using System;
 
-public partial class MouseCircle : Node2D
+public partial class SlingshotString : Node2D
 {
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		
-	}
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Position = GetViewport().GetMousePosition();
-
-		if (Input.IsActionPressed("mouse1"))
-		{
-			this.Scale = new Vector2(1, 1);
-		}
-		else
-		{
-			this.Scale = new Vector2 (2, 2);
-		}
-
 	}
 }

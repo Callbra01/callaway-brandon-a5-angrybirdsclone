@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwhnwmftpkgwd"]
+
+[ext_resource type="Script" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_kegod"]
+[ext_resource type="Script" path="res://Scripts/SlingshotString.cs" id="2_m1gdh"]
+
+[node name="Slingshot" type="Node2D"]
+position = Vector2(0, 324)
+
+[node name="Rectangle" type="Node2D" parent="."]
+position = Vector2(0, -50)
+script = ExtResource("1_kegod")
+size = Vector2(25, 100)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)
+
+[node name="Rectangle2" type="Node2D" parent="."]
+position = Vector2(-17, -126)
+rotation = -0.523599
+script = ExtResource("1_kegod")
+size = Vector2(25, 75)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)
+
+[node name="Rectangle3" type="Node2D" parent="."]
+position = Vector2(21, -126)
+rotation = 0.523599
+script = ExtResource("1_kegod")
+size = Vector2(25, 75)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)
+
+[node name="SlingshotPoints" type="Node2D" parent="."]
+script = ExtResource("2_m1gdh")
+
+[node name="Left Arm" type="Node2D" parent="SlingshotPoints"]
+position = Vector2(-32, -148)
+
+[node name="Rectangle" type="Node2D" parent="SlingshotPoints/Left Arm"]
+position = Vector2(0, -50)
+script = ExtResource("1_kegod")
+size = Vector2(25, 100)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)
+
+[node name="Right Arm" type="Node2D" parent="SlingshotPoints"]
+position = Vector2(33, -147)
+
+[node name="Rectangle" type="Node2D" parent="SlingshotPoints/Right Arm"]
+position = Vector2(0, -50)
+script = ExtResource("1_kegod")
+size = Vector2(25, 100)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)
+
+[node name="Pull Point" type="Node2D" parent="SlingshotPoints"]
+position = Vector2(-99, -111)
+
+[node name="Rectangle" type="Node2D" parent="SlingshotPoints/Pull Point"]
+position = Vector2(0, -50)
+script = ExtResource("1_kegod")
+size = Vector2(25, 100)
+corner_radius = 0.0
+fill_color = Color(0.646589, 0.394945, 0.252001, 1)

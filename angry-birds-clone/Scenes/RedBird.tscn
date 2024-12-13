@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b500pc8dol2hr"]
+
+[ext_resource type="Script" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="1_i3khn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n24ma"]
+
+[node name="RedBird" type="Node2D"]
+
+[node name="Ellipse" type="Node2D" parent="."]
+script = ExtResource("1_i3khn")
+size = Vector2(50, 50)
+fill_color = Color(1, 0.28, 0.28, 1)
+metadata/_edit_lock_ = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Ellipse"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ellipse/RigidBody2D"]
+scale = Vector2(2.16, 2.16)
+shape = SubResource("CircleShape2D_n24ma")
+metadata/_edit_lock_ = true
