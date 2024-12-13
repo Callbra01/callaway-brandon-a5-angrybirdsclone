@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/SlingshotString.cs" id="2_m1gdh"]
 
 [node name="Slingshot" type="Node2D"]
-position = Vector2(331, 274)
 
 [node name="Rectangle" type="Node2D" parent="."]
 position = Vector2(0, -50)
