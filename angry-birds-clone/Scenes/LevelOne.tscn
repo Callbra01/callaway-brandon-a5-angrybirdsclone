@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdqt22x3v1sav"]
+[gd_scene load_steps=8 format=3 uid="uid://bdqt22x3v1sav"]
 
 [ext_resource type="Script" path="res://Scripts/LevelOne.cs" id="1_ajb5r"]
 [ext_resource type="Script" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_yc31d"]
 [ext_resource type="PackedScene" uid="uid://byprpcomo4en1" path="res://Scenes/MouseCircle.tscn" id="2_tpg12"]
 [ext_resource type="PackedScene" uid="uid://dwhnwmftpkgwd" path="res://Scenes/Slingshot.tscn" id="3_mjgre"]
 [ext_resource type="PackedScene" uid="uid://b500pc8dol2hr" path="res://Scenes/RedBird.tscn" id="4_p0mkg"]
+[ext_resource type="Script" path="res://Scripts/GameManager.cs" id="5_s0h1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg28"]
 
@@ -13,6 +14,9 @@ script = ExtResource("1_ajb5r")
 mouseCircle = ExtResource("2_tpg12")
 slingshot = ExtResource("3_mjgre")
 redBird = ExtResource("4_p0mkg")
+
+[node name="Game Manager" type="Node" parent="."]
+script = ExtResource("5_s0h1b")
 
 [node name="Floor" type="Node2D" parent="."]
 position = Vector2(585, 600)

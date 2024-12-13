@@ -8,7 +8,10 @@ public partial class SlingshotString : Node2D
     Node2D leftArmPoint;
     Node2D slingPoint;
 
+    Node2D mouseCircle = new Node2D();
     Vector2[] stringCoords = new Vector2[3];
+
+    bool isSlingPointTracking = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -17,6 +20,7 @@ public partial class SlingshotString : Node2D
         rightArmPoint = GetNode<Node2D>("Right Arm");
         leftArmPoint = GetNode<Node2D>("Left Arm");
         slingPoint = GetNode<Node2D>("Pull Point");
+
 
         // Set arm point positions to vector2 array
         stringCoords[0] = rightArmPoint.Position;
@@ -32,6 +36,15 @@ public partial class SlingshotString : Node2D
         stringCoords[1] = slingPoint.Position;
         stringCoords[2] = leftArmPoint.Position;
 
+        if (isSlingPointTracking)
+        {
+            slingPoint.GlobalPosition = mouseCircle.GlobalPosition;
+        }
+
+        if (!Input.IsActionPressed("mouse1"))
+        {
+            isSlingPointTracking = false;
+        }
         // Redraw the string, incase of movement
         QueueRedraw();
     }
@@ -40,5 +53,15 @@ public partial class SlingshotString : Node2D
     {
         Color white = Colors.White;
         DrawPolyline(stringCoords, white, 15.4f);
+    }
+
+    private void _on_area_2d_area_entered(Area2D area)
+    {
+        mouseCircle = area.GetParent<Node2D>();
+        if (Input.IsActionPressed("mouse1"))
+        {
+            isSlingPointTracking = true;
+        }
+        
     }
 }
