@@ -50,27 +50,34 @@ public partial class LevelOne : Node2D
 		var x2 = 25;
         var y1 = slingPoint.Position.Y;
 		var y2 = slingPoint.Position.Y;
+		// if mouse1 is released, power distance is set for one frame, to avoid a low float value
 		if (Input.IsActionJustReleased("mouse1"))
 		{
             powerDistance = ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         }
 
-        
+        // If slingpoint reaches the original position of the slingshot, release the ball(bird)
 		if (slingPoint.Position.X > 25)
 		{
 			hasBirdBeenReleased = true;
 		}
 		
+		// If ball(bird) has not been released, track ball with slingshot band
 		if (!hasBirdBeenReleased)
 		{
 			birdParent.GlobalPosition = slingPoint.GlobalPosition;
             birdPos.GlobalPosition = slingPoint.GlobalPosition;
+
+			// Set applyForce to false, to prevent constant force later
 			canApplyForce = true;
         }
 		else
 		{
+			// Enable camera, and have camera track ball(bird)
 			camera.Enabled = true;
 			camera.Position = birdPos.GlobalPosition;
+
+			// Apply force to ball(bird) for one frame, to avoid constant force application
 			if (canApplyForce)
 			{
                 birdPos.ApplyForce(new Vector2(powerDistance, 0));
