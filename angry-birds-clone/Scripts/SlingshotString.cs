@@ -3,7 +3,7 @@ using System;
 
 public partial class SlingshotString : Node2D
 {
-
+    // Get Slingshot ponts
     Node2D rightArmPoint;
     Node2D leftArmPoint;
     Node2D slingPoint;
@@ -39,7 +39,7 @@ public partial class SlingshotString : Node2D
         stringCoords[1] = slingPoint.Position;
         stringCoords[2] = leftArmPoint.Position;
 
-
+        // Drag ball(bird) with slingshot band
         if (isSlingPointTracking)
         {
             canFire = true;
@@ -47,6 +47,7 @@ public partial class SlingshotString : Node2D
             slingPoint.GlobalPosition = mouseCircle.GlobalPosition;
         }
 
+        // If mouse1 is released, disable slingpoint tracking, and lerp band back to stationary
         if (!Input.IsActionPressed("mouse1"))
         {
             isSlingPointTracking = false;
@@ -56,16 +57,18 @@ public partial class SlingshotString : Node2D
 
             }
         }
-        // Redraw the string, incase of movement
+        // Redraw the string, as PolyLine doesn't update every frame
         QueueRedraw();
     }
 
+    // Draw slingshot band
     public override void _Draw()
     {
         Color white = Colors.White;
         DrawPolyline(stringCoords, white, 15.4f);
     }
 
+    // If mousecursor is colliding with slingshot band, being band drawback
     private void _on_area_2d_area_entered(Area2D area)
     {
         mouseCircle = area.GetParent<Node2D>();

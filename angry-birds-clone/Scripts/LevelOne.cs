@@ -45,7 +45,7 @@ public partial class LevelOne : Node2D
 		Node2D slingPoint = slingPos.GetNode<Node2D>("SlingshotPoints/Pull Point");
         RigidBody2D birdPos = birdParent.GetNode<RigidBody2D>("RedBird");
 
-
+		// Get distance from slingshot band to 25, where the slingshot is position
         var x1 = slingPoint.Position.X;
 		var x2 = 25;
         var y1 = slingPoint.Position.Y;
@@ -78,4 +78,12 @@ public partial class LevelOne : Node2D
             }
 		}
     }
+	// For the life of me I can not figure out collision between tags when I can only get a node and not an RB from an RB object's signal
+	private void _on_brick_body_entered(Node body)
+	{
+		if (body.Name == "Brick" || body.Name == "Brick2" || body.Name == "Brick3" || body.Name == "Brick4")
+		{
+			GD.Print("THUG");
+		}
+	}
 }

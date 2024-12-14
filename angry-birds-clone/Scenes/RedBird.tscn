@@ -5,6 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n24ma"]
 
 [node name="RedBird" type="RigidBody2D"]
+collision_layer = 9
+collision_mask = 9
+gravity_scale = 2.0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
