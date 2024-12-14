@@ -10,8 +10,11 @@ public partial class SlingshotString : Node2D
 
     Node2D mouseCircle = new Node2D();
     Vector2[] stringCoords = new Vector2[3];
-
+    Vector4 stringBox = new Vector4();
+    Vector2 birdHolder = new Vector2();
     bool isSlingPointTracking = false;
+    bool canFire = false;
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -36,14 +39,22 @@ public partial class SlingshotString : Node2D
         stringCoords[1] = slingPoint.Position;
         stringCoords[2] = leftArmPoint.Position;
 
+
         if (isSlingPointTracking)
         {
+            canFire = true;
+            birdHolder = slingPoint.Position;
             slingPoint.GlobalPosition = mouseCircle.GlobalPosition;
         }
 
         if (!Input.IsActionPressed("mouse1"))
         {
             isSlingPointTracking = false;
+            if (canFire)
+            {
+                slingPoint.GlobalPosition = slingPoint.GlobalPosition.Lerp(rightArmPoint.GlobalPosition, 0.4f);
+
+            }
         }
         // Redraw the string, incase of movement
         QueueRedraw();
@@ -62,6 +73,5 @@ public partial class SlingshotString : Node2D
         {
             isSlingPointTracking = true;
         }
-        
     }
 }

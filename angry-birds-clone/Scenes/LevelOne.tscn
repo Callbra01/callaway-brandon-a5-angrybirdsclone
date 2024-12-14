@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdqt22x3v1sav"]
+[gd_scene load_steps=9 format=3 uid="uid://bdqt22x3v1sav"]
 
 [ext_resource type="Script" path="res://Scripts/LevelOne.cs" id="1_ajb5r"]
 [ext_resource type="Script" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_yc31d"]
@@ -9,17 +9,23 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlg28"]
 
-[node name="Level One" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkib0"]
+size = Vector2(20, 77)
+
+[node name="Level One" type="Node2D" node_paths=PackedStringArray("camera", "birdParent")]
 script = ExtResource("1_ajb5r")
 mouseCircle = ExtResource("2_tpg12")
 slingshot = ExtResource("3_mjgre")
 redBird = ExtResource("4_p0mkg")
+camera = NodePath("Camera2D")
+birdParent = NodePath("BirdParent")
 
 [node name="Game Manager" type="Node" parent="."]
 script = ExtResource("5_s0h1b")
 
 [node name="Floor" type="Node2D" parent="."]
 position = Vector2(585, 600)
+scale = Vector2(35.04, 1)
 
 [node name="Rectangle" type="Node2D" parent="Floor"]
 scale = Vector2(1.24, 1)
@@ -34,6 +40,152 @@ scale = Vector2(59.2, 4.56)
 shape = SubResource("RectangleShape2D_rlg28")
 
 [node name="SlingshotSpawn" type="Node2D" parent="."]
-position = Vector2(131, 579)
+position = Vector2(277, 579)
 
 [node name="BirdParent" type="Node2D" parent="."]
+position = Vector2(267, 446)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+enabled = false
+limit_top = 0
+limit_bottom = 0
+
+[node name="Node" type="Node" parent="."]
+
+[node name="brick" type="RigidBody2D" parent="Node"]
+position = Vector2(1526, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick2" type="RigidBody2D" parent="Node"]
+position = Vector2(2143, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+gravity_scale = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick2"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick2"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick3" type="RigidBody2D" parent="Node"]
+position = Vector2(2875, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+gravity_scale = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick3"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick3"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick4" type="RigidBody2D" parent="Node"]
+position = Vector2(3775, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+gravity_scale = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick4"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick5" type="RigidBody2D" parent="Node"]
+position = Vector2(5107, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+mass = 0.5
+gravity_scale = 0.05
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick5"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick5"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick6" type="RigidBody2D" parent="Node"]
+position = Vector2(5356, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick6"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick6"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick7" type="RigidBody2D" parent="Node"]
+position = Vector2(5585, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick7"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick7"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
+
+[node name="brick8" type="RigidBody2D" parent="Node"]
+position = Vector2(5834, 466)
+scale = Vector2(1.28, 2.06135)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/brick8"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lkib0")
+
+[node name="Rectangle" type="Node2D" parent="Node/brick8"]
+position = Vector2(-1, 0)
+script = ExtResource("1_yc31d")
+size = Vector2(24.4901, 78.2909)
+corner_radius = 0.0
